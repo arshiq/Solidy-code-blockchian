@@ -13,8 +13,8 @@ contract data{
     }
     
     function widALLEther() public {
-        require(msg.sender== owner, "you cannot widthwath all ethers");//you have to be the owner who deyoled the contract
-        require(!isPause,"contract is paused accnnot henace no widthdraw can take place");//you cannot widrwath whean acc is paused
+        require(msg.sender== owner, "you are not the owner hence you cannot acess this"); //you have to be the owner who deyoled the contract
+        require(!isPause,"contract is paused accnnot henace no widthdraw can take place"); //you cannot widrwath whean acc is paused
         address payable to =msg.sender;
         to.transfer(address(this).balance);
     }
@@ -32,5 +32,13 @@ contract data{
     function getBalanceincontract() public view returns(uint256){ 
         return address(this).balance; 
     } 
+    
+    function terminateScontarct() public{
+        require(msg.sender== owner, "you are not the owner hence you cannot acess this");  //you have to be the owner who deyoled the contract
+        require(!isPause,"contract is paused accnnot henaceno treminate"); //you cannot terminate whean acc is paused u can remoe this line if u want
+        address payable to =msg.sender;
+        selfdestruct(to);
+        
+    }
     
     }
